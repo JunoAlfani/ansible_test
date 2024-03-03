@@ -1,7 +1,15 @@
+[web_servers]
 psycho666@192.168.209.132
-centos@192.168.209.134
 psycho777@192.168.209.135
+
+[db_servers]
 debian@192.168.209.137
+
+[file_servers]
+centos@192.168.209.134
+
+[workstations]
+administrator@192.168.209.133
 
 
 
