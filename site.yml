@@ -4,19 +4,38 @@
    become: true
    pre_tasks:
 
-   - name: install updates (CentOS)
+   - name: update repo cache (CentOS)
      tags: always
      dnf:
-       update_only: yes
        update_cache: yes
+     changed_when: false
      when: ansible_distribution == "CentOS"
 
-   - name: install updates (Ubuntu)
+   - name: update repo cache (Ubuntu)
      tags: always
      apt:
        upgrade: dist
-       update_cache: yes
+     changed_when: false
      when: ansible_distribution in ["Ubuntu","Debian"]
+
+ - hosts: all
+   become: true
+   tasks:
+
+   - name: add ssh key for juno
+     tags: always
+     authorized_key:
+       user: juno
+       key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID+mO7TRXshoJKstlZXAi8ZK9j/DRIAI3wneZTklVqwh ansible"
+
+   - name: add sudoers file for juno
+     tags: always
+     copy:
+       src: sudoer_juno
+       dest: /etc/sudoers.d/juno
+       owner: root
+       group: root
+       mode: 0440
 
  - hosts: workstations
    become: true
