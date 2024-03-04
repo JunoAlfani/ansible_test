@@ -1,0 +1,13 @@
+- name: install mariadb server package (CentOS)
+  tags: centos,db,postgresql
+  dnf:
+    name: postgresql
+    state: latest
+  when: ansible_distribution == "CentOS"
+
+- name: install postgresql server
+  tags: db,postgresql,ubuntu
+  apt:
+    name: postgresql
+    state: latest
+  when: ansible_distribution in ["Ubuntu","Debian"]

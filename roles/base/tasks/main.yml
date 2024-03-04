@@ -1,0 +1,4 @@
+- name: add ssh key for juno
+  authorized_key:
+    user: juno
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID+mO7TRXshoJKstlZXAi8ZK9j/DRIAI3wneZTklVqwh ansible"
