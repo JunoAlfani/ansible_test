@@ -1,5 +1,5 @@
-[kubernetes-master-nodes]
+[master]
 workstation=192.168.209.133
 
-[kubernetes-master-nodes]
+[workers]
 psycho666=192.168.209.132
